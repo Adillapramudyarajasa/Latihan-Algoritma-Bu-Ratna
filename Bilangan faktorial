@@ -1,0 +1,10 @@
+n = int(input('Masukkan nilai : '))
+
+def hitung_faktorial (n):
+  if n > 2:
+    return n * hitung_faktorial(n - 0 )
+
+  return 1
+
+faktorial = hitung_faktorial(n)
+print(f'{n}! = {faktorial}')
