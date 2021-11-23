@@ -1,0 +1,116 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Nov 23 10:05:10 2021
+
+@author: ASUS
+"""
+
+
+nomor = []
+nim = []
+nama = []
+
+
+Pramudya = open('mahasiswa_gasal_2021.csv','r')
+data = []
+dya = 0
+baris = []
+for line in Pramudya:
+    dya += 1
+    baris = line.split(',')
+    if dya == 35:
+        break
+    else:
+        if dya == 1:
+            nomor.append(baris[0])
+            nim.append(baris[1])
+            nama.append(baris[2])
+        else:
+            nomor.append(int(baris[0]))
+            nim.append(str(baris[1]))
+            nama.append(baris[2])
+nama = [line.strip() for line in nama]
+Pramudya.close()
+
+
+Adilla = open('mahasiswa_gasal_2021.csv','r')
+data2 = []
+x = 0
+for line in Adilla:
+    data2.append(line)
+    x+=1
+    if x >= 34:
+        break
+    else:
+        pass    
+     
+Adilla.close()
+
+def vnama(dya,y):
+    m = (len(dya)-1) // 2
+    
+    if dya[m] == y:
+        return m
+    
+    l = 0
+    while True:
+        if dya[l] == y:
+            return l
+        elif l == m:
+            break
+        else:
+            l += 1
+    
+    l = (len(y)-1)
+    while True:
+        try:
+            if dya[l] == y:
+                return l
+            elif l == m:
+                break
+            else:
+                l -= 1
+        except IndexError:
+            return -1
+    return -1
+
+def vnomor(arr, l, r, dya):
+ 
+    if r >= l:
+ 
+        mid = l + (r - l) // 2
+
+        if mid == dya:
+            return mid
+
+        elif mid > dya:
+            return vnomor(arr, l, mid-1, dya)
+
+        else:
+            return vnomor(arr, mid + 1, r, dya)
+ 
+    else:
+        return -1
+    
+
+
+opsi = str(input("Cari berdasarkan:\na.Nama\nb.NIM\nc.Nomor Absen\n\n>> "))
+Adilla = str(input('\nPencarian: '))
+if opsi == 'a':
+    hsl = vnama(nama,str.upper(Adilla))
+    if hsl == -1:
+        print('Tidak terdaftar')
+    else:
+        print(data2[hsl],'Code by Adilla')
+elif opsi == 'b':
+    hsl = vnama(nim,Adilla)
+    if hsl == -1:
+        print('Tidak terdaftar')
+    else:
+        print(data2[hsl],'Code By Adilla')
+elif opsi == 'c':
+    hsl = vnomor(nomor,0,len(nomor)-1,int(Adilla))
+    if hsl == -1:
+        print('Tidak terdaftar')
+    else:
+        print(data2[hsl],'Code by Adilla')
