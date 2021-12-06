@@ -1,0 +1,39 @@
+print()
+class kendaraan():
+    def _init_(self):
+        print()
+        print('jenis kendaraan darat')
+
+class mobil(kendaraan): 
+    def __init__(self,merk,model):
+        super()._init_()
+        self.merk = str.capitalize(merk)
+        self.model = str.capitalize(model)
+        print(f'{self.merk} {self.model} adalah kendaraanyang beroda empat')
+        
+
+class bus(kendaraan):
+    def __init__(self,merk,model):
+        super()._init_()
+        self.merk = str.capitalize(merk)
+        self.model = str.capitalize(model)
+        print(f'{self.merk} {self.model} adalah kendaraa yang beroda empat atau lebih')
+
+class sepeda(kendaraan):
+    def __init__(self,merk,model):
+        super()._init_()
+        self.merk = str.capitalize(merk)
+        self.model = str.capitalize(model)
+        print(f'{self.merk} {self.model} adalah kendaraan yang beroda dua')
+
+class motor(kendaraan):
+    def __init__(self,merk,model):
+        super()._init_()
+        self.merk = str.capitalize(merk)
+        self.model = str.capitalize(model)
+        print(f'{self.merk} {self.model} adalah kendaraan yang beroda dua')
+
+x1 = mobil('Toyota','supra')
+x2 = bus('Trans Jakarta','bus kota jakarta')
+x3 = sepeda('element','sepda lipet')
+x4 = motor('yamaha','rxking')
